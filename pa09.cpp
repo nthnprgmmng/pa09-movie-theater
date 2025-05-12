@@ -1,12 +1,3 @@
-/// @file pa09.cpp
-/// @author Nathan Miguel <5008695076@student.csn.edu>
-/// @date 05/09/25
-/// @note I pledge my word of honor that I have complied with the
-/// CSN Academic Integrity Policy while completing this assignment.
-/// @brief This program is a movie theater booking system that allows a user to
-/// view the theater seating chart, book a seat, cancel a booking, and display
-/// a sales summary. Using an array of structs.
-/// @note Used skeleton, time spent 2 hours.
 
 #include <iostream>
 #include <iomanip>
