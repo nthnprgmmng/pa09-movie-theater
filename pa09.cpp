@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <iomanip>
 
@@ -35,8 +34,8 @@ int main() {
     double totalSales = 0.0;          // Total ticket sales amount.
     int row;                          // Loop counter for rows.
     int col;                          // Loop counter for columns.
-    bool bookResult;                    // Stores result of function bookSeat.
-    bool cancelResult;                  // Stores result of function cancelSeat.
+    bool bookResult;                  // Stores result of function bookSeat.
+    bool cancelResult;                // Stores result of function cancelSeat.
 
     // Initialize seating chart
     for (row = 0; row < MAX_ROWS; row++) {
@@ -50,6 +49,7 @@ int main() {
 
     cout << "Welcome to the C++ Theater Booking System!" << endl;
 
+    // Executes different statements based on menu choice.
     do {
         menuChoice = displayMenu();
 
@@ -133,20 +133,23 @@ bool bookSeat(Seat seats[][MAX_SEATS], double& totalSales) {
     int row;
     int seat;
     bool check = false;
+
     cout << "\nBooking a seat..." << endl;
     cout << "Enter Row (1-4): ";
     cin >> row;
     cout << "Enter Seat (1-12): ";
     cin >> seat;
 
-    if (row - 1 < MAX_ROWS && seat - 1 < MAX_SEATS) {
-        if (!seats[row - 1][seat - 1].isBooked) {
-            check = true;
-            seats[row - 1][seat - 1].isBooked = true;
-            totalSales += SEAT_PRICE;
-            cout << "\nSeat booked successfully: Row " << row << ","
-                 << " Seat " <<
-                 seat << " ($10.00)" << endl;
+    if (row > 0 && seat > 0) {
+        if (row <= MAX_ROWS && seat <= MAX_SEATS) {
+            if (!seats[row - 1][seat - 1].isBooked) {
+                check = true;
+                seats[row - 1][seat - 1].isBooked = true;
+                totalSales += SEAT_PRICE;
+                cout << "\nSeat booked successfully: Row " << row << ","
+                     << " Seat " <<
+                     seat << " ($10.00)" << endl;
+            }
         }
     }
 
@@ -163,20 +166,23 @@ bool cancelSeat(Seat seats[][MAX_SEATS], double& totalSales) {
     int row;
     int seat;
     bool check = false;
+
     cout << "Canceling a seat..." << endl;
     cout << "Enter Row (1-4): ";
     cin >> row;
     cout << "Enter Seat (1-12): ";
     cin >> seat;
 
-    if (row - 1 < MAX_ROWS && seat - 1 < MAX_SEATS) {
-        if (seats[row - 1][seat - 1].isBooked) {
-            check = true;
-            seats[row - 1][seat - 1].isBooked = false;
-            totalSales -= SEAT_PRICE;
-            cout << "\nSeat canceled successfully: Row " << row << ","
-                 << " Seat "
-                 << seat << " ($10.00)" << endl;
+    if (row > 0 && seat > 0) {
+        if (row <= MAX_ROWS && seat <= MAX_SEATS) {
+            if (seats[row - 1][seat - 1].isBooked) {
+                check = true;
+                seats[row - 1][seat - 1].isBooked = false;
+                totalSales -= SEAT_PRICE;
+                cout << "\nSeat canceled successfully: Row " << row << ","
+                     << " Seat "
+                     << seat << " ($10.00)" << endl;
+            }
         }
     }
 
